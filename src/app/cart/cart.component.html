@@ -17,3 +17,7 @@
     <p>codice: {{ prodotto.codice }}</p>
     <p>categoria: {{ prodotto.categoria }}</p>
 </div>
+
+<div *ngFor="let product of products$ | async">
+    <p>{{ product.title }}</p>
+</div>

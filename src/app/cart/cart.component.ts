@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CartService } from '../cart.service';
-import { Product } from '../models';
+import { Product, ProductsRoot } from '../models';
+import { HttpClient } from '@angular/common/http';
+import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent {
+export class CartComponent implements OnInit {
   data = new Date();
   stringa = 'ciao come va, test pipes';
   testo = '';
@@ -19,8 +21,17 @@ export class CartComponent {
     {codice: '005', nome: 'prodotto5', prezzo: 250, foto: '', categoria:1},
     {codice: '006', nome: 'prodotto6', prezzo: 300, foto: '', categoria:2},
   ]
+  products$?: Observable<Product[]>
 
-  constructor (protected cartService: CartService) {
+  constructor (protected cartService: CartService, private http: HttpClient) {
     
   }
+
+  ngOnInit(): void {
+      this.products$ = this.http.get<ProductsRoot>('https://dummyjson.com/products')
+      .pipe(map((result) => {
+        return result.products
+      }))
+  }
+
 }
