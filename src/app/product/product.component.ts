@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Product, ProductsRoot } from '../models';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-product',
@@ -17,7 +18,7 @@ export class ProductComponent implements OnInit, OnDestroy  {
   loading = false
   currentSlide = 0;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) {
+  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router, private cartService: CartService) {
     const {id} = route.snapshot.params
     this.id = id
 
@@ -56,6 +57,12 @@ export class ProductComponent implements OnInit, OnDestroy  {
       this.currentSlide = this.product.images.length - 1;
     } else {
       this.currentSlide--;
+    }
+  }
+
+  onAddToCart(){
+    if (this.product) {
+      this.cartService.addProduct(this.product)
     }
   }
 }

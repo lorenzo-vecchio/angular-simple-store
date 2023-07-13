@@ -8,6 +8,7 @@ import { ProductsComponent } from './products/products.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ProductComponent } from './product/product.component';
+import { CartComponent } from './cart/cart.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { ProductComponent } from './product/product.component';
     ProductsComponent,
     PagenotfoundComponent,
     ProductComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

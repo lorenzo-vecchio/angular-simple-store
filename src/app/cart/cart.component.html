@@ -1,0 +1,6 @@
+<div style="margin-top: 5rem"></div>
+<p>cart works!</p>
+<div *ngFor="let product of cartService.products">
+    <h6>{{ product.title }}</h6>
+    <p>{{ product.description }}</p>
+</div>

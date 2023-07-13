@@ -22,4 +22,4 @@
 <ng-container *ngIf="product">
     <p>Prezzo finale: {{ (product.price - (product.price / 100 * product.discountPercentage)) | number:'1.2-2' }}$</p>
 </ng-container>  
-<button class="btn btn-warning">Acquista</button>
+<button class="btn btn-warning" (click)="onAddToCart()">Acquista</button>
