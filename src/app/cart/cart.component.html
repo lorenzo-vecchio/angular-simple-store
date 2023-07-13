@@ -1,6 +1,19 @@
 <div style="margin-top: 5rem"></div>
-<p>cart works!</p>
 <div *ngFor="let product of cartService.products">
-    <h6>{{ product.title }}</h6>
+    <h6>{{ product.title | uppercase }}</h6>
     <p>{{ product.description }}</p>
+</div>
+
+<p>{{ data | date:'short' | uppercase }}</p>
+
+
+<p>{{ stringa | dataFormat:10 }}</p>
+
+
+<input type="text" [(ngModel)]='testo'>
+
+<div *ngFor="let prodotto of prodotti | filtraArray:testo:'categoria'" style="border: 1px solid black">
+    <p>nome: {{ prodotto.nome }}</p>
+    <p>codice: {{ prodotto.codice }}</p>
+    <p>categoria: {{ prodotto.categoria }}</p>
 </div>

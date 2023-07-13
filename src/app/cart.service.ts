@@ -5,21 +5,25 @@ import { Product } from './models';
   providedIn: 'root'
 })
 export class CartService {
-  products: Product[];
+  private _products: Product[];
 
   constructor() {
-    this.products = [];
+    this._products = [];
   }
 
   addProduct(product: Product) {
-    this.products = [...this.products, product];
+    this._products = [...this._products, product];
   }
 
   removeProduct(id: number) {
-    const index = this.products.findIndex(product => product.id === id);
+    const index = this._products.findIndex(product => product.id === id);
     if (index !== -1) {
-      this.products.splice(index, 1);
+      this._products.splice(index, 1);
     }
+  }
+
+  get products() {
+    return this._products;
   }
   
 }

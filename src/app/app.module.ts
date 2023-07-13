@@ -9,6 +9,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ProductComponent } from './product/product.component';
 import { CartComponent } from './cart/cart.component';
+import { DataFormatPipe } from './data-format.pipe';
+import { FiltraArrayPipe } from './filtra-array.pipe';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,11 +22,14 @@ import { CartComponent } from './cart/cart.component';
     PagenotfoundComponent,
     ProductComponent,
     CartComponent,
+    DataFormatPipe,
+    FiltraArrayPipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
