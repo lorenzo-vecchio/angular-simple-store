@@ -1,25 +1,31 @@
 <div style="margin-top: 5rem"></div>
-<h1>{{ product?.title }}</h1>
-<div class="carousel slide" data-ride="carousel" id="carousel">
-    <div class="carousel-inner">
-      <div 
-       class="carousel-item" 
-       *ngFor="let image of product?.images; let i = index"
-       [class.active]="i == currentSlide">
-        <img class="d-block w-100" [src]="image" alt="slide {{ i }}">      
-      </div>
-    </div>  
-    <a class="carousel-control-prev" (click)="prevSlide()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg>
-    </a>
-    <a class="carousel-control-next" (click)="nextSlide()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
-    </a>    
+
+<div class="container">
+    <h1>{{ product?.title }}</h1>
+    <div class="carousel slide" data-ride="carousel" id="carousel">
+        <div class="carousel-inner">
+        <div 
+        class="carousel-item" 
+        *ngFor="let image of product?.images; let i = index"
+        [class.active]="i == currentSlide">
+            <img class="d-block w-100" [src]="image" alt="slide {{ i }}">      
+        </div>
+        </div>  
+        <a class="carousel-control-prev" (click)="prevSlide()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </a>
+        <a class="carousel-control-next" (click)="nextSlide()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>    
+    </div>
+    <p>{{ product?.description }}</p>
+    <p>Prezzo originale: <span class="barred">{{ product?.price }}$</span></p>
+    <p>Sconto: {{ product?.discountPercentage }}%</p>
+    <ng-container *ngIf="product">
+        <p>Prezzo finale: {{ product.price | discountedPrice:product.discountPercentage | number:'1.2-2'}}$</p>
+    </ng-container>  
+    <div>
+        <button class="btn btn-primary" (click)="goBack()">Indietro</button>
+        <button class="btn btn-warning" (click)="onAddToCart()">Acquista</button>
+    </div>
 </div>
-<p>{{ product?.description }}</p>
-<p>Prezzo originale: <span class="barred">{{ product?.price }}$</span></p>
-<p>Sconto: {{ product?.discountPercentage }}%</p>
-<ng-container *ngIf="product">
-    <p>Prezzo finale: {{ (product.price - (product.price / 100 * product.discountPercentage)) | number:'1.2-2' }}$</p>
-</ng-container>  
-<button class="btn btn-warning" (click)="onAddToCart()">Acquista</button>

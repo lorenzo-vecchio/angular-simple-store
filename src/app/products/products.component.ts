@@ -1,8 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ProductsRoot} from '../models';
+import {Product, ProductsRoot} from '../models';
 import {HttpClient} from '@angular/common/http';
 import {Subscription} from 'rxjs';
 import {Router} from "@angular/router";
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-products',
@@ -15,7 +16,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   loading = false;
   private httpSubscription?: Subscription;
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private cartService: CartService) {
   }
 
   ngOnInit() {
@@ -35,5 +36,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   goToProduct(id: number) {
     this.router.navigate(['/products', id])
+  }
+
+  onAddToCart(product: Product) {
+    this.cartService.addProduct(product);
   }
 }

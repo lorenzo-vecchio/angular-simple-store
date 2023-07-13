@@ -9,9 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ProductComponent } from './product/product.component';
 import { CartComponent } from './cart/cart.component';
-import { DataFormatPipe } from './data-format.pipe';
-import { FiltraArrayPipe } from './filtra-array.pipe';
 import { FormsModule } from '@angular/forms';
+import { DiscountedPricePipe } from './discounted-price.pipe';
 
 
 @NgModule({
@@ -22,8 +21,7 @@ import { FormsModule } from '@angular/forms';
     PagenotfoundComponent,
     ProductComponent,
     CartComponent,
-    DataFormatPipe,
-    FiltraArrayPipe,
+    DiscountedPricePipe,
   ],
   imports: [
     BrowserModule,

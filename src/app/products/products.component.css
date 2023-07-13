@@ -1,3 +1,11 @@
 img {
     object-fit: cover;
 }
+.ogPrice {
+    text-decoration: line-through;
+    color: red;
+}
+
+.newPrice {
+    color: green;
+}

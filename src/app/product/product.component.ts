@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Product, ProductsRoot } from '../models';
 import { CartService } from '../cart.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-product',
@@ -18,7 +19,13 @@ export class ProductComponent implements OnInit, OnDestroy  {
   loading = false
   currentSlide = 0;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router, private cartService: CartService) {
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private router: Router,
+    private cartService: CartService,
+    private location: Location
+    ) {
     const {id} = route.snapshot.params
     this.id = id
 
@@ -64,5 +71,9 @@ export class ProductComponent implements OnInit, OnDestroy  {
     if (this.product) {
       this.cartService.addProduct(this.product)
     }
+  }
+
+  goBack() {
+    this.location.back()
   }
 }
