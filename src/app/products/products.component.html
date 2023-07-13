@@ -1,9 +1,17 @@
 <div style="margin-top: 5rem"></div>
+
+
+<select name="categorie" id="categorie" title="categorie" [(ngModel)]="selectedCategory">
+  <option value="">Tutti i filtri</option>
+  <option *ngFor="let categoria of categories" [value]="categoria">{{ categoria }}</option>
+</select>
+<p>{{ selectedCategory }}</p>
+
 <div class="album py-5 bg-body-tertiary">
     <div class="container">
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <div class="col" *ngFor="let product of productsRoot?.products">
+        <div class="col" *ngFor="let product of productsRoot?.products | filtroProdotti:selectedCategory">
           <div class="card shadow-sm">
             <img [src]="product.thumbnail" alt="" class="bd-placeholder-img card-img-top" width="100%" height="225">
             <div class="card-body">

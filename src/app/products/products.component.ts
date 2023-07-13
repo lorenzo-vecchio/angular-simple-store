@@ -11,10 +11,11 @@ import { CartService } from '../cart.service';
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit, OnDestroy {
-  //stati
   productsRoot?: ProductsRoot;
   loading = false;
   private httpSubscription?: Subscription;
+  categories: string[] = [];
+  selectedCategory: string = '';
 
   constructor(private http: HttpClient, private router: Router, private cartService: CartService) {
   }
@@ -25,6 +26,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (value) => {
           this.productsRoot = value;
+          this.categories = [...new Set(this.productsRoot?.products.map(p => p.category))]
           this.loading = false;
         },
       });

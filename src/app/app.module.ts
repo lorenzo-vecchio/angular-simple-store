@@ -11,6 +11,7 @@ import { ProductComponent } from './product/product.component';
 import { CartComponent } from './cart/cart.component';
 import { FormsModule } from '@angular/forms';
 import { DiscountedPricePipe } from './discounted-price.pipe';
+import { FiltroProdottiPipe } from './filtro-prodotti.pipe';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { DiscountedPricePipe } from './discounted-price.pipe';
     ProductComponent,
     CartComponent,
     DiscountedPricePipe,
+    FiltroProdottiPipe,
   ],
   imports: [
     BrowserModule,
