@@ -7,11 +7,17 @@ import { Directive, ElementRef, Input } from '@angular/core';
 export class AlreadyInCartDirective {
 
   @Input() set appAlreadyInCart(disabled: boolean) {
+    const button = this.elementRef.nativeElement;
     if (disabled) {
-      const button = this.elementRef.nativeElement;
       button.disabled = disabled;
-      button.className = 'btn btn-sm btn-outline-primary';
+      button.classList.remove('btn-outline-secondary')
+      button.classList.add('btn-outline-primary');
       button.innerText = '✓';
+    }
+    else {
+      button.disabled = false;
+      button.classList.remove('btn-outline-primary');
+      button.classList.add('btn-outline-secondary')
     }
   }
 
