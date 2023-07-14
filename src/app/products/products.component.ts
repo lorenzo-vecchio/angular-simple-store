@@ -43,4 +43,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
   onAddToCart(product: Product) {
     this.cartService.addProduct(product);
   }
+
+  alreadyInCart(product: Product) {
+    if (this.cartService.products.indexOf(product) > -1) return true;
+    else return false;
+  }
 }

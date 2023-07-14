@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { DiscountedPricePipe } from './discounted-price.pipe';
 import { FiltroProdottiPipe } from './filtro-prodotti.pipe';
 import { LoginComponent } from './login/login.component';
+import { AlreadyInCartDirective } from './already-in-cart.directive';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { LoginComponent } from './login/login.component';
     DiscountedPricePipe,
     FiltroProdottiPipe,
     LoginComponent,
+    AlreadyInCartDirective,
   ],
   imports: [
     BrowserModule,

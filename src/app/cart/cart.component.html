@@ -1,10 +1,18 @@
 <div style="margin-top: 5rem"></div>
 
+<div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">Search</span>
+  <input type="text" class="form-control" placeholder="Search..." aria-label="" aria-describedby="basic-addon1" [(ngModel)]="searchInput">
+</div>
+
+<p>{{ searchInput }}</p>
+
+
 <div class="album py-5 bg-body-tertiary">
     <div class="container">
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <div class="col" *ngFor="let product of cartService.products">
+        <div class="col" *ngFor="let product of cartService.products | filtroProdotti:searchInput">
           <div class="card shadow-sm">
             <img [src]="product.thumbnail" alt="" class="bd-placeholder-img card-img-top" width="100%" height="225">
             <div class="card-body">

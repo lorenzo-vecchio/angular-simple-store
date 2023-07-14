@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent {
+  searchInput: string = "";
+
   constructor (protected cartService: CartService, private router: Router) {
     
   }
