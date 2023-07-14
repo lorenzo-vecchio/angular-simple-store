@@ -10,21 +10,7 @@
 <div class="album py-5 bg-body-tertiary">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <div class="col" *ngFor="let product of productsRoot?.products | filtroProdotti:selectedCategory:'category'">
-          <div class="card shadow-sm">
-            <img [src]="product.thumbnail" alt="" class="bd-placeholder-img card-img-top" width="100%" height="225">
-            <div class="card-body">
-              <p class="card-text">{{ product.title }}</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary" (click)="goToProduct(product.id)">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary" (click)="onAddToCart(product)" [appAlreadyInCart]="alreadyInCart(product)">Add to cart</button>
-                </div>
-                <small class="text-body-secondary"><span class="ogPrice">{{ product.price }}$</span><span class="newPrice"> {{ product.price | discountedPrice:product.discountPercentage | number:'1.2-2'  }}$</span> </small>
-              </div>
-            </div>
-          </div>
-        </div>
+        <app-card *ngFor="let product of productsRoot?.products | filtroProdotti:selectedCategory:'category'" [product]="product"></app-card>
       </div>
     </div>
   </div>

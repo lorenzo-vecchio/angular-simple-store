@@ -14,6 +14,7 @@ import { DiscountedPricePipe } from './discounted-price.pipe';
 import { FiltroProdottiPipe } from './filtro-prodotti.pipe';
 import { LoginComponent } from './login/login.component';
 import { AlreadyInCartDirective } from './already-in-cart.directive';
+import { CardComponent } from './card/card.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { AlreadyInCartDirective } from './already-in-cart.directive';
     FiltroProdottiPipe,
     LoginComponent,
     AlreadyInCartDirective,
+    CardComponent,
   ],
   imports: [
     BrowserModule,
