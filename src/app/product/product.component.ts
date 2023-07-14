@@ -18,6 +18,7 @@ export class ProductComponent implements OnInit, OnDestroy  {
   product?: Product
   loading = false
   currentSlide = 0;
+  productsRoot?: ProductsRoot;
 
   constructor(
     private route: ActivatedRoute,
@@ -42,6 +43,14 @@ export class ProductComponent implements OnInit, OnDestroy  {
       .subscribe({
         next: (value) => {
           this.product = value;
+          this.loading = false;
+        },
+      });
+      this.httpSubscription = this.http
+      .get<ProductsRoot>('https://dummyjson.com/products')
+      .subscribe({
+        next: (value) => {
+          this.productsRoot = value;
           this.loading = false;
         },
       });
@@ -75,5 +84,20 @@ export class ProductComponent implements OnInit, OnDestroy  {
 
   goBack() {
     this.location.back()
+  }
+
+  alreadyInCart() {
+    if (this.product && this.product.id) {
+      const foundIndex = this.cartService.products.findIndex(item => item.id === this.product?.id);
+      return foundIndex > -1;
+    } else {
+      return false;
+    }
+  }
+
+  onRemoveFromCart() {
+    if (this.product) {
+      this.cartService.removeProduct(this.product.id);
+    }
   }
 }

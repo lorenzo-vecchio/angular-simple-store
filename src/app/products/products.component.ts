@@ -35,17 +35,4 @@ export class ProductsComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.httpSubscription?.unsubscribe();
   }
-
-  goToProduct(id: number) {
-    this.router.navigate(['/products', id])
-  }
-
-  onAddToCart(product: Product) {
-    this.cartService.addProduct(product);
-  }
-
-  alreadyInCart(product: Product) {
-    if (this.cartService.products.indexOf(product) > -1) return true;
-    else return false;
-  }
 }

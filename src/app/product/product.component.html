@@ -26,6 +26,15 @@
     </ng-container>  
     <div>
         <button class="btn btn-primary" (click)="goBack()">Indietro</button>
-        <button class="btn btn-warning" (click)="onAddToCart()">Acquista</button>
+        <button class="btn btn-warning" *ngIf="!alreadyInCart()" (click)="onAddToCart()">Acquista</button>
+        <button class="btn btn-danger" *ngIf="alreadyInCart()" (click)="onRemoveFromCart()">Remove from cart</button>
     </div>
 </div>
+
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <app-card *ngFor="let product of productsRoot?.products | filtroProdotti:product?.category:'category'" [product]="product"></app-card>
+      </div>
+    </div>
+  </div>

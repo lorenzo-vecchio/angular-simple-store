@@ -7,10 +7,7 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 
-export const myCanActivate: CanActivateFn = (
-  route: ActivatedRouteSnapshot,
-  state: RouterStateSnapshot
-) => {
+export const myCanActivate: CanActivateFn = () => {
   const router = inject(Router)
   const authService = inject(AuthService)
   return authService.isAuthenticated().then((authenticated) => {
